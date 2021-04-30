@@ -5,4 +5,7 @@
 3. Ran make modules && make && sudo make install && sudo make install_modules for initial setup and after code changes.
 4. Configured the cpuid.c code in the kvm_emulate_cpuid function and vmx_handle_exit function in vmx.c
 5. Installed virt-manager and ran a vm with cpuid installed
-6. rand the cpuid commannd cpuid -l 0x4FFFFFFF in inner vm
+6. ran the cpuid command cpuid -l 0x4FFFFFFF in inner vm
+
+# Q3 answer:
+The exits increase at a stable rate. After rebooting, approximately 45k exits were made.
