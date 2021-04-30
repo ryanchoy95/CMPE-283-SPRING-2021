@@ -8,4 +8,4 @@
 6. ran the cpuid command cpuid -l 0x4FFFFFFF in inner vm
 
 # Q3 answer:
-The exits increase at a stable rate. After rebooting, approximately 45k exits were made.
+The exits increase at a stable rate. After sull boots, approximately 45k exits were made.
