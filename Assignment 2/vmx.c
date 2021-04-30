@@ -5912,14 +5912,15 @@ void dump_vmcs(void)
  * The guest has exited.  See if we can fix it or if we need userspace
  * assistance.
  */
- void add_exit_per_reason(u32 exit_reason);
+ void add_exits_time_per_reason(u32 exit_reason,u64 time_taken);
 static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 {
 	struct vcpu_vmx *vmx = to_vmx(vcpu);
 	u32 exit_reason = vmx->exit_reason;
 	u32 vectoring_info = vmx->idt_vectoring_info;
+	u64 timer;
 	
-	add_exit_per_reason(exit_reason);
+	int temp;
 	/*
 	 * Flush logged GPAs PML buffer, this will make dirty_bitmap more
 	 * updated. Another good is, in kvm_vm_ioctl_get_dirty_log, before
@@ -6027,6 +6028,7 @@ static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 	}
 	
 	
+	
 	if (exit_fastpath != EXIT_FASTPATH_NONE)
 		return 1;
 
@@ -6055,7 +6057,14 @@ static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 	return kvm_vmx_exit_handlers[exit_reason](vcpu);
 	
 	
-	
+	if (exit_reason < kvm_vmx_max_exit_handlers
+	    && kvm_vmx_exit_handlers[exit_reason]){
+		timer = rdtsc();
+        	temp = kvm_vmx_exit_handlers[exit_reason](vcpu);
+        	timer = rdtsc() - timer;
+        	add_exits_time_per_reason(exit_reason,timer);
+        	return temp;
+	}	
 	
 unexpected_vmexit:
 	vcpu_unimpl(vcpu, "vmx: unexpected exit reason 0x%x\n", exit_reason);
