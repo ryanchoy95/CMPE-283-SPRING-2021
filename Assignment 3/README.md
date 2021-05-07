@@ -11,6 +11,7 @@
 
 # Answer to questions:
 Q. How many exits per boot, stable?
+
 A. About 1 million exits per reboot, pretty stable accross each reboot
 
 Initial:
@@ -26,7 +27,9 @@ After 2 reboots:
 ![](after_after.png)
 
 Q. Most frequent types of exits?
+
 A. Top 3 most frequent exits are external interrupt, cpuid and HLT
 
 Q. Least frequent types of exits?
+
 A. There was a lot of exit types that did not have a single exit at all. ie.(MWAIT, Triple Fault, Task Switch etc.)
