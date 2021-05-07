@@ -12,12 +12,15 @@
 # Answer to questions:
 Q. How many exits per boot, stable?
 A. About 1 million exits per reboot, pretty stable accross each reboot
+
 Initial:
 
 ![](before.png)
+
 After 1 reboot:
 
 ![](after.png)
+
 After 2 reboots:
 
 ![](after_after.png)
