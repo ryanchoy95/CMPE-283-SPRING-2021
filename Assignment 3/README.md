@@ -10,4 +10,17 @@
 ![](fe.png)
 
 # Answer to questions:
-1. 
+Q. How many exits per boot, stable?
+A. About 1 million exits per reboot, pretty stable accross each reboot
+Initial:
+![](before.png)
+After 1 reboot:
+![](after.png)
+After 2 reboots:
+![](after_after)
+
+Q. Most frequent types of exits?
+A. Top 3 most frequent exits are external interrupt, cpuid and HLT
+
+Q. Least frequent types of exits?
+A. There was a lot of exit types that did not have a single exit at all. ie.(MWAIT, Triple Fault, Task Switch etc.)
