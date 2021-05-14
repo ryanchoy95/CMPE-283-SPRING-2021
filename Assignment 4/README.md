@@ -16,4 +16,4 @@ A: The exits were way more when shadow paging was in play, which ws expected, bu
 
 Q: What changed between the runs
 
-A: The amount of exits for certain exit types mentioned above
+A: The amount of exits for certain exit types mentioned above either increased drastically or remained about the same.
